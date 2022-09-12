@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Пользователи{% endblock %}
+
+{% block body %}
+    <h1>Пользователи</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Логин</th>
+                <th>Роль</th>
+                <th>Пароль</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td align="center">{{ user.id }}</td>
+                <td align="center">{{ user.email }}</td>
+                <td align="center">{{ user.roles ? user.roles|json_encode : '!!!' }}</td>
+                <td align="center">{{ user.password }}</td>
+                <td>
+                    <a href="{{ path('app_user_show', {'id': user.id}) }}">Показать</a>
+                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">Изменить</a>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">В таблице нет записей</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_user_new') }}">Новая запись</a>
+{% endblock %}

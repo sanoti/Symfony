@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Чеки{% endblock %}
+
+{% block body %}
+    <h1>Чеки</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Дата</th>
+                <th>Магазин</th>
+                <th>Покупатель</th>
+                <th>whoWrite</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for check in checks %}
+            <tr>
+                <td >{{ check.id }}</td>
+                <td align="center">{{ check.date ? check.date|date('Y-m-d') : '' }}</td>
+                <td align="center">{{ check.store }}</td>
+                <td align="center">{{ check.byingGuest }}</td>
+                <td align="center">{{ check.whoAuthor }}</td>
+                <td>
+                    <a href="{{ path('app_check_show', {'id': check.id}) }}">Показать</a>
+                    {% if is_granted('ROLE_USER') %}
+                    <a href="{{ path('app_check_edit', {'id': check.id}) }}">Изменить</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">В таблице нет записей</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_check_new') }}">Новая запись</a>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Гости{% endblock %}
+
+{% block body %}
+    <h1>Гости</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Имя</th>
+                <th>Номер</th>
+                <th>Пользователь</th>
+                <th>whoWrite</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for guest in guests %}
+            <tr>
+                <td align="center">{{ guest.id }}</td>
+                <td align="center">{{ guest.name }}</td>
+                <td align="center">{{ guest.number }}</td>
+                <td align="center">{{ guest.whoUser }}</td>
+                <td align="center">{{ guest.whoAuthor }}</td>
+
+
+                <td>
+                    <a href="{{ path('app_guest_show', {'id': guest.id}) }}">Показать</a>
+                    <a href="{{ path('app_guest_edit', {'id': guest.id}) }}">Изменить</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">В таблице нет записей</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_guest_new') }}">Новая запись</a>
+{% endblock %}

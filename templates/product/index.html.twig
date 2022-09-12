@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Продукты{% endblock %}
+
+{% block body %}
+    <h1>Продукты</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Наименование</th>
+                <th>Цена</th>
+                <th>whoWrite</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td align="center">{{ product.id }}</td>
+                <td align="center">{{ product.name }}</td>
+                <td align="center">{{ product.price }}</td>
+                <td align="center">{{ product.whoAuthor }}</td>
+                <td>
+                    <a href="{{ path('app_product_show', {'id': product.id}) }}">Показать</a>
+                    <a href="{{ path('app_product_edit', {'id': product.id}) }}">Изменить</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">В таблице нет записей</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_product_new') }}">Новая запись</a>
+{% endblock %}

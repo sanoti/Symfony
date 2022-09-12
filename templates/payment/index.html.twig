@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Транзакции{% endblock %}
+
+{% block body %}
+    <h1>Транзакции</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Дата и время</th>
+                <th>Сумма</th>
+                <th>От</th>
+                <th>Кому</th>
+                <th>whoWrite</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for payment in payments %}
+            <tr>
+                <td align="center">{{ payment.id }}</td>
+                <td align="center">{{ payment.date ? payment.date|date('d-m-Y H:i') : '' }}</td>
+                <td align="center">{{ payment.sum }}</td>
+                <td align="center">{{ payment.fromGuest }}</td>
+                <td align="center">{{ payment.toGuest }}</td>
+                <td align="center">{{ payment.whoAuthor }}</td>
+                <td>
+                    <a href="{{ path('app_payment_show', {'id': payment.id}) }}">Показать</a>
+                    <a href="{{ path('app_payment_edit', {'id': payment.id}) }}">Изменить</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">В таблице нет записей</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_payment_new') }}">Новая запись</a>
+{% endblock %}

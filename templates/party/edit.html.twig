@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Изменение вечеринки{% endblock %}
+
+{% block body %}
+    <h1>Изменение вечеринки</h1>
+
+    {{ include('party/_form.html.twig', {'button_label': 'Обновить'}) }}
+
+    <a href="{{ path('app_party_index') }}">Назад</a>
+
+    {{ include('party/_delete_form.html.twig') }}
+{% endblock %}

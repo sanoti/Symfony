@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Чек{% endblock %}
+
+{% block body %}
+    <h1>Чек</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ check.id }}</td>
+            </tr>
+            <tr>
+                <th>Время</th>
+                <td>{{ check.date ? check.date|date('d-m-Y') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Магазин</th>
+                <td>{{ check.store }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_check_index') }}">Назад</a>
+
+    <a href="{{ path('app_check_edit', {'id': check.id}) }}">Изменить</a>
+
+    {{ include('check/_delete_form.html.twig') }}
+{% endblock %}

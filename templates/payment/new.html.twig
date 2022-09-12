@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Новая транзакция{% endblock %}
+
+{% block body %}
+    <h1>Новая Транзакция</h1>
+
+    {{ include('payment/_form.html.twig') }}
+
+    <a href="{{ path('app_payment_index') }}">Назад</a>
+{% endblock %}

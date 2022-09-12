@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Новый гость{% endblock %}
+
+{% block body %}
+    <h1>Новый гость</h1>
+
+    {{ include('guest/_form.html.twig') }}
+
+    <a href="{{ path('app_guest_index') }}">Назад</a>
+{% endblock %}

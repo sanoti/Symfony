@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Транзакция{% endblock %}
+
+{% block body %}
+    <h1>Транзакция</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ payment.id }}</td>
+            </tr>
+            <tr>
+                <th>Дата</th>
+                <td>{{ payment.date ? payment.date|date('Y-m-d H:i') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Сумма</th>
+                <td>{{ payment.sum }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_payment_index') }}">Назад</a>
+
+    <a href="{{ path('app_payment_edit', {'id': payment.id}) }}">Изменить</a>
+
+    {{ include('payment/_delete_form.html.twig') }}
+{% endblock %}

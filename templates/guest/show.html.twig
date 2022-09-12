@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Гость{% endblock %}
+
+{% block body %}
+    <h1>Гость</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ guest.id }}</td>
+            </tr>
+            <tr>
+                <th>Имя</th>
+                <td>{{ guest.name }}</td>
+            </tr>
+            <tr>
+                <th>Номер</th>
+                <td>{{ guest.number }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_guest_index') }}">Назад</a>
+
+    <a href="{{ path('app_guest_edit', {'id': guest.id}) }}">Изменить</a>
+
+    {{ include('guest/_delete_form.html.twig') }}
+{% endblock %}

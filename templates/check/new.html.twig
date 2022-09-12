@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Новый чек{% endblock %}
+
+{% block body %}
+    <h1>Новый чек</h1>
+
+    {{ include('check/_form.html.twig') }}
+
+    <a href="{{ path('app_check_index') }}">Назад</a>
+{% endblock %}

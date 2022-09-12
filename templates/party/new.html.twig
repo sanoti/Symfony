@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Новая вечеринка{% endblock %}
+
+{% block body %}
+    <h1>Новая вечеринка</h1>
+
+    {{ include('party/_form.html.twig') }}
+
+
+
+    <a href="{{ path('app_party_index') }}">Назад</a>
+{% endblock %}

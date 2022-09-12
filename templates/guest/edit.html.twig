@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Измененение гостя{% endblock %}
+
+{% block body %}
+    <h1>Измененение гостя</h1>
+
+    {{ include('guest/_form.html.twig', {'button_label': 'Обновить'}) }}
+
+    <a href="{{ path('app_guest_index') }}">Назад</a>
+
+    {{ include('guest/_delete_form.html.twig') }}
+{% endblock %}

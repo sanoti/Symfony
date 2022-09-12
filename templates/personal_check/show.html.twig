@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Персональный чек{% endblock %}
+
+{% block body %}
+    <h1>Персональный чек</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ personal_check.id }}</td>
+            </tr>
+            <tr>
+                <th>ИзЧека</th>
+                <td>{{ personal_check.fromCheck }}</td>
+            </tr>
+            <tr>
+                <th>Продукт</th>
+                <td>{{ personal_check.eatingProduct }}</td>
+            </tr>
+            <tr>
+                <th>Количество</th>
+                <td>{{ personal_check.amount }}</td>
+            </tr>
+            <tr>
+                <th>Гость</th>
+                <td>{{ personal_check.guestWhoEat }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_personal_check_index') }}">Назад</a>
+
+    <a href="{{ path('app_personal_check_edit', {'id': personal_check.id}) }}">Изменить</a>
+
+    {{ include('personal_check/_delete_form.html.twig') }}
+{% endblock %}

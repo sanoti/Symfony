@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Персональные чеки{% endblock %}
+
+{% block body %}
+    <h1>Персональные чеки</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>ИзЧека</th>
+                <th>Продукт</th>
+                <th>Количество</th>
+                <th>Гость</th>
+                <th>whoWrite</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for personal_check in personal_checks %}
+            <tr>
+                <td align="center">{{ personal_check.id }}</td>
+                <td align="center">{{ personal_check.fromCheck }}</td>
+                <td align="center">{{ personal_check.eatingProduct }}</td>
+                <td align="center">{{ personal_check.amount }}</td>
+                <td align="center">{{ personal_check.guestWhoEat }}</td>
+                <td align="center">{{ personal_check.whoAuthor }}</td>
+                <td>
+                    <a href="{{ path('app_personal_check_show', {'id': personal_check.id}) }}">Показать</a>
+                    <a href="{{ path('app_personal_check_edit', {'id': personal_check.id}) }}">Изменить</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">В таблице нет записей</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_personal_check_new') }}">Новая запись</a>
+{% endblock %}

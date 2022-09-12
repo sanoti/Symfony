@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Вечеринки{% endblock %}
+
+{% block body %}
+    <h1>Вечеринки</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Имя</th>
+                <th>Дата проведения</th>
+                <th>Место</th>
+                <th>whoWrite</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for party in parties %}
+            <tr>
+                <td align="center">{{ party.id }}</td>
+                <td align="center">{{ party.name }}</td>
+                <td align="center">{{ party.dateAt ? party.dateAt|date('d-m-Y') : ''}}</td>
+                <td align="center">{{ party.location }}</td>
+                <td align="center">{{ party.whoAuthor }}</td>
+
+
+
+                <td>
+                    <a href="{{ path('app_party_show', {'id': party.id}) }}">Показать</a>
+                    <a href="{{ path('app_party_edit', {'id': party.id}) }}">Изменить</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">В таблице нет записей</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_party_new') }}">Новая запись</a>
+{% endblock %}
